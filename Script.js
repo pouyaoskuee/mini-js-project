@@ -2,6 +2,7 @@ const plus = document.querySelector('.plus')
 const minus = document.querySelector('.minus')
 const reset = document.querySelector('.reset')
 const counter_value = document.querySelector('.counter-value')
+const paragraph = document.querySelector('p')
 
 
 let i = Number(counter_value.textContent)
@@ -30,6 +31,24 @@ function counter (e){
     if (classList.contains('plus')) i++;
     else if (classList.contains('minus')) i--;
     else i=0;
+    if (i<0) {
+        counter_value.style.color = 'red'
+        paragraph.classList.add('red')
+        paragraph.classList.remove('green')
+        paragraph.classList.remove('gray')
+
+    }else if (i>0) {
+        counter_value.style.color = 'green'
+        paragraph.classList.add('green')
+        paragraph.classList.remove('red')
+        paragraph.classList.remove('gray')
+    }else {
+        counter_value.style.color = 'gray'
+        paragraph.classList.add('gray')
+        paragraph.classList.remove('red')
+        paragraph.classList.remove('green')
+
+    }
 
     counter_value.textContent = i;
 
@@ -39,4 +58,8 @@ function counter (e){
 plus.addEventListener('click', counter)
 minus.addEventListener('click', counter)
 reset.addEventListener('click', counter)
+
+
+
+
 
